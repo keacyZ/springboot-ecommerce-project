@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}"></head>
+<body class="sub_page">
+
+<div class="hero_area">
+    <div class="bg-box">
+        <img th:src="@{/images/nav-bg.jpg}" alt="">
+    </div>
+    <header th:replace="~{fragments/header :: header}"></header>
+</div>
+<div class="container mt-5">
+    <h2 class="mb-4">🍕 Pizzas</h2>
+
+    <div class="row">
+        <div class="col-md-4 mb-4" th:each="product : ${products}">
+            <div class="card h-100 shadow-sm">
+
+                <img th:src="@{'/images/' + ${product.image}}"
+                     style="width:100%; height:220px; object-fit:cover;">
+
+                <div class="card-body text-center">
+                    <h5 th:text="${product.name}"></h5>
+                    <p th:text="${product.description}"></p>
+                    <p><b th:text="${product.price} + ' ₺'"></b></p>
+
+                    <form th:action="@{'/cart/add/' + ${product.id}}" method="post">
+                        <button type="submit" class="btn btn-warning">
+                            Sepete Ekle
+                        </button>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<section>
+
+    <div class="container mt-5">
+
+        <h2>Siparişlerim</h2>
+
+        <div th:if="${orders.isEmpty()}">
+            Henüz siparişiniz yok.
+        </div>
+
+        <div th:each="order : ${orders}" class="card mt-3 p-3">
+
+            <b>Sipariş No:</b> <span th:text="${order.id}"></span><br>
+            <b>Tarih:</b> <span th:text="${order.createdAt}"></span><br>
+            <b>Toplam:</b> <span th:text="${order.totalPrice}"></span> ₺
+
+            <hr>
+
+            <ul>
+                <li th:each="item : ${order.items}">
+                    <td th:text="${item.product.name}"></td> -
+                    <span th:text="${item.quantity}"></span> adet -
+                    <td th:text="${item.product.price}"></td> ₺
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+</html>

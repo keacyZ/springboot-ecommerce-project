@@ -1,0 +1,25 @@
+<h2>Checkout</h2>
+
+<table>
+    <tr>
+        <th>Ürün</th>
+        <th>Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam</th>
+    </tr>
+
+    <tr th:each="item : ${cartItems}">
+        <td th:text="${item.product.name}"></td>
+        <td th:text="${item.product.price}"></td>
+        <td th:text="${item.quantity}"></td>
+        <td th:text="${item.product.price * item.quantity}"></td>
+    </tr>
+</table>
+
+<h3>
+    Genel Toplam: <span th:text="${totalPrice}"></span> ₺
+</h3>
+
+<form th:action="@{/checkout}" method="post">
+    <button type="submit">Siparişi Tamamla</button>
+</form>

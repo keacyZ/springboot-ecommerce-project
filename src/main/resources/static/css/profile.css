@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #222831;
+    margin: 0;
+}
+
+.profile-container {
+    max-width: 420px;
+    margin: auto;
+    padding: 15px;
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.back-btn {
+    font-size: 22px;
+    text-decoration: none;
+    color: white;
+}
+
+.save-btn {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+}
+
+
+.upload-btn {
+    margin-left: 10px;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 6px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+}
+
+textarea {
+    height: 80px;
+}
+
+.readonly {
+    background: #f2f2f2;
+}
+
+

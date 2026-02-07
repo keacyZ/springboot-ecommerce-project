@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:color="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/head :: head}"></head>
+<body class="sub_page">
+
+<div class="hero_area">
+    <div class="bg-box">
+        <img th:src="@{/images/nav-bg.jpg}" alt="">
+    </div>
+    <header th:replace="~{/fragments/header :: header}"></header>
+</div>
+<head>
+    <title>Edit Profile</title>
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+</head>
+
+<div class="profile-container">
+
+    <div class="top-bar">
+        <a href="/" class="back-btn">&#8592;</a>
+        <h2>Edit Profile</h2>
+        <button form="profileForm" type="submit" class="save-btn">Save</button>
+    </div>
+
+
+    <form id="profileForm" th:action="@{/profile/update}" th:object="${user}" method="post">
+
+        <label>First name</label>
+        <input type="text" th:field="*{firstName}" placeholder="Type here"/>
+
+        <label>Last name</label>
+        <input type="text" th:field="*{lastName}" placeholder="Type here"/>
+
+        <label>Email</label>
+        <input type="text" th:field="*{email}" readonly class="readonly"/>
+
+        <label>Phone</label>
+        <input type="text" th:field="*{phone}" placeholder="Type here"/>
+
+        <button type="submit">Update</button>
+    </form>
+
+
+</div>
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
+</body>
+</html>

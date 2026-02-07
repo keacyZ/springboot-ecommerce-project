@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ürün Yönetimi</title>
+</head>
+<body>
+
+<h2>Ürün Yönetimi</h2>
+
+<a href="/admin/product/add">➕ Yeni Ürün Ekle</a>
+<br><br>
+
+<table border="1" cellpadding="8">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Ürün Adı</th>
+        <th>Fiyat</th>
+        <th>İşlemler</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}">1</td>
+        <td th:text="${product.name}">Ürün Adı</td>
+        <td th:text="${product.price}">0.0</td>
+        <td>
+            <a th:href="@{'/admin/products/edit/' + ${product.id}}">✏️ Düzenle</a>
+            |
+            <a th:href="@{'/admin/products/delete/' + ${product.id}}"
+               onclick="return confirm('Silmek istediğine emin misin?')">❌ Sil</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a href="/admin">⬅ Admin Dashboard</a>
+
+</body>
+</html>

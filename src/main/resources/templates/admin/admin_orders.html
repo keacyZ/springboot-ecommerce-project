@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sipariş Yönetimi</title>
+</head>
+<body>
+
+<h2>Siparişler</h2>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Müşteri</th>
+        <th>Tutar</th>
+        <th>Durum</th>
+        <th>Güncelle</th>
+    </tr>
+
+    <tr th:each="o : ${orders}">
+        <td th:text="${o.id}"></td>
+        <td th:text="${o.customerEmail}"></td>
+        <td th:text="${o.totalPrice} + ' ₺'"></td>
+        <td th:text="${o.status}"></td>
+        <td>
+            <form th:action="@{/admin/orders/update-status}" method="post">
+                <input type="hidden" name="orderId" th:value="${o.id}">
+
+                <select name="status">
+                    <option>HAZIRLANIYOR</option>
+                    <option>YOLDA</option>
+                    <option>TESLIM_EDILDI</option>
+                </select>
+
+                <button type="submit">Güncelle</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<br>
+<a href="/admin">← Dashboard</a>
+
+</body>
+</html>
